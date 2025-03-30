@@ -17,7 +17,7 @@ function App() {
   // 1. Fetch tasks from backend
   const fetchTasks = async () => {
     try {
-      const response = await fetch("${API_URL}/api/tasks");
+      const response = await fetch("/api/tasks");
       const data = await response.json();
       setTasks(data);
     } catch (error) {
@@ -35,7 +35,7 @@ function App() {
       // Update task: Send PUT request
       try {
         const response = await fetch(
-          `${API_URL}/api/tasks/${editTask.task_id}`,
+          `/api/tasks/${editTask.task_id}`,
           {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
@@ -51,7 +51,7 @@ function App() {
     } else {
       // Add new task: Send POST request
       try {
-        const response = await fetch("${API_URL}/api/tasks", {
+        const response = await fetch("/api/tasks", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),

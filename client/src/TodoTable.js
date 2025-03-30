@@ -4,7 +4,7 @@ import React from "react";
 export default function TodoTable({ tasks, onEditClick, fetchTasks }) {
   // Optionally, you can use fetchTasks to refresh tasks after deletion
   // if you include a delete handler here as well.
-  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5001";
+  //const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5001";
 
 
   return (
@@ -49,7 +49,7 @@ export default function TodoTable({ tasks, onEditClick, fetchTasks }) {
                         // Example delete function (if desired)
                         try {
                           const response = await fetch(
-                            `${API_URL}/api/tasks/${task.task_id}`,
+                            `/api/tasks/${task.task_id}`,
                             { method: "DELETE" }
                           );
                           if (response.ok) {

@@ -99,16 +99,13 @@ app.delete('/api/tasks/:id', async (req, res) => {
   }
 });
 
-// Serve static assets if in production
-if (process.env.NODE_ENV === "production") {
-    // Serve any static files from the React app
-    app.use(express.static(path.join(__dirname, "../client/build")));
-  
-    // Handle React routing, return all requests to React app
-    app.get("*", (req, res) => {
-      res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-    });
-  }
+// Serve static files from the React frontend
+app.use(express.static(path.join(__dirname, "../client/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+});
+
 
   
 
